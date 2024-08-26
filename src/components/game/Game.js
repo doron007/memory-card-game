@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
+// Import all card images
+import card1Image from '../../../public/images/card1.png';
+import card2Image from '../../../public/images/card2.png';
+import card3Image from '../../../public/images/card3.png';
+import card4Image from '../../../public/images/card4.png';
+import card5Image from '../../../public/images/card5.png';
+import card6Image from '../../../public/images/card6.png';
+
 const initialCards = [
-  { id: 1, image: '/images/card1.png' },
-  { id: 2, image: '/images/card2.png' },
-  { id: 3, image: '/images/card3.png' },
-  { id: 4, image: '/images/card4.png' },
-  { id: 5, image: '/images/card5.png' },
-  { id: 6, image: '/images/card6.png' },
+  { id: 1, image: card1Image.src },
+  { id: 2, image: card2Image.src },
+  { id: 3, image: card3Image.src },
+  { id: 4, image: card4Image.src },
+  { id: 5, image: card5Image.src },
+  { id: 6, image: card6Image.src },
 ];
 
 const Game = () => {
