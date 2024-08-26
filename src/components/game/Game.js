@@ -17,7 +17,6 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [time, setTime] = useState(0);
-  const [matchedAnimation, setMatchedAnimation] = useState([]);
 
   useEffect(() => {
     shuffleCards();
@@ -67,8 +66,6 @@ const Game = () => {
       if (firstCard.id === secondCard.id) {
         setMatchedPairs(prev => [...prev, firstCardId, secondCardId]);
         setScore(prevScore => prevScore + 1);
-        setMatchedAnimation([firstCardId, secondCardId]);
-        setTimeout(() => setMatchedAnimation([]), 500);
       }
 
       setTimeout(() => setFlippedCards([]), 1000);
@@ -101,19 +98,13 @@ const Game = () => {
       )}
       <div className="grid grid-cols-4 gap-4">
         {cards.map(card => (
-          <div 
-            key={card.uniqueId} 
-            className={`transition-transform duration-200 ${
-              matchedAnimation.includes(card.uniqueId) ? 'scale-110' : ''
-            }`}
-          >
-            <Card
-              id={card.uniqueId}
-              image={card.image}
-              isFlipped={flippedCards.includes(card.uniqueId) || matchedPairs.includes(card.uniqueId)}
-              onClick={handleCardClick}
-            />
-          </div>
+          <Card
+            key={card.uniqueId}
+            id={card.uniqueId}
+            image={card.image}
+            isFlipped={flippedCards.includes(card.uniqueId) || matchedPairs.includes(card.uniqueId)}
+            onClick={handleCardClick}
+          />
         ))}
       </div>
     </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +19,7 @@
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,6 +27,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 @layer utilities {
@@ -39,61 +46,4 @@ body {
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
-}
-
-/* Additional custom styles for the game */
-.game-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.game-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.game-info {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 1rem;
-}
-
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 600px;
-}
-
-.new-game-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  background-color: #3498db;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.new-game-button:hover {
-  background-color: #2980b9;
-}
-
-.game-over-message {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #27ae60;
-  margin-top: 1rem;
-  text-align: center;
 }
