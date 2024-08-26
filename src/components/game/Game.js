@@ -103,7 +103,7 @@ const Game = () => {
           </button>
           {isGameOver && (
             <div className="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-4 text-center">
-              Congratulations! You've completed the game in {formatTime(time)}!
+              Congratulations! You&apos;ve completed the game in {formatTime(time)}!
             </div>
           )}
           <div className="flex-grow grid grid-cols-4 gap-2 sm:gap-3">
