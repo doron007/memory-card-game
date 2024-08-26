@@ -14,13 +14,21 @@ const Game = () => {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
+    shuffleCards();
+  }, []);
+
+  const shuffleCards = () => {
     const shuffledCards = [...initialCards, ...initialCards]
       .sort(() => Math.random() - 0.5)
       .map((card, index) => ({ ...card, uniqueId: index }));
     setCards(shuffledCards);
-  }, []);
+    setFlippedCards([]);
+    setMatchedPairs([]);
+    setScore(0);
+  };
 
   const handleCardClick = (uniqueId) => {
     if (flippedCards.length === 2 || flippedCards.includes(uniqueId) || matchedPairs.includes(uniqueId)) {
@@ -37,6 +45,7 @@ const Game = () => {
 
       if (firstCard.id === secondCard.id) {
         setMatchedPairs([...matchedPairs, firstCardId, secondCardId]);
+        setScore(prevScore => prevScore + 1);
       }
 
       setTimeout(() => setFlippedCards([]), 1000);
@@ -45,7 +54,16 @@ const Game = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-4">Memory Card Game</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Memory Card Game</h2>
+        <div className="text-xl">Score: {score}</div>
+      </div>
+      <button 
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+        onClick={shuffleCards}
+      >
+        New Game
+      </button>
       <div className="grid grid-cols-4 gap-4">
         {cards.map(card => (
           <Card
