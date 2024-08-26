@@ -4,8 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // This line is important for static exports
-  distDir: 'out',
 }
 
 module.exports = nextConfig
