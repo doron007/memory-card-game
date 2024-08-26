@@ -79,33 +79,37 @@ const Game = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-8 px-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Memory Card Game</h1>
-      <div className="flex justify-between items-center mb-4">
-        <div className="text-xl">Score: {score}</div>
-        <div className="text-xl">Time: {formatTime(time)}</div>
-      </div>
-      <button 
-        className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6"
-        onClick={shuffleCards}
-      >
-        New Game
-      </button>
-      {isGameOver && (
-        <div className="text-2xl font-bold text-green-600 mb-6 text-center">
-          Congratulations! You've completed the game in {formatTime(time)}!
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-400 to-purple-500 p-2 sm:p-4">
+      <div className="flex-grow flex flex-col max-w-4xl mx-auto w-full">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2 sm:mb-4 text-white">Memory Card Game</h1>
+        <div className="flex-grow flex flex-col bg-white rounded-lg shadow-lg p-2 sm:p-4">
+          <div className="flex justify-between items-center mb-2 sm:mb-4">
+            <div className="text-lg sm:text-xl">Score: {score}</div>
+            <div className="text-lg sm:text-xl">Time: {formatTime(time)}</div>
+          </div>
+          <button 
+            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 sm:mb-4"
+            onClick={shuffleCards}
+          >
+            New Game
+          </button>
+          {isGameOver && (
+            <div className="text-xl sm:text-2xl font-bold text-green-600 mb-2 sm:mb-4 text-center">
+              Congratulations! You've completed the game in {formatTime(time)}!
+            </div>
+          )}
+          <div className="flex-grow grid grid-cols-4 gap-2 sm:gap-3">
+            {cards.map(card => (
+              <Card
+                key={card.uniqueId}
+                id={card.uniqueId}
+                image={card.image}
+                isFlipped={flippedCards.includes(card.uniqueId) || matchedPairs.includes(card.uniqueId)}
+                onClick={handleCardClick}
+              />
+            ))}
+          </div>
         </div>
-      )}
-      <div className="grid grid-cols-4 gap-4">
-        {cards.map(card => (
-          <Card
-            key={card.uniqueId}
-            id={card.uniqueId}
-            image={card.image}
-            isFlipped={flippedCards.includes(card.uniqueId) || matchedPairs.includes(card.uniqueId)}
-            onClick={handleCardClick}
-          />
-        ))}
       </div>
     </div>
   );

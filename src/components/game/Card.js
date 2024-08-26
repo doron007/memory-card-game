@@ -3,10 +3,10 @@ import React from 'react';
 const Card = ({ id, image, isFlipped, onClick }) => {
   return (
     <div 
-      className="w-full h-32 cursor-pointer rounded-md overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
+      className="w-full pb-[133%] relative cursor-pointer rounded-md overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
       onClick={() => onClick(id)}
     >
-      <div className="w-full h-full">
+      <div className="absolute inset-0">
         {isFlipped ? (
           <div className="w-full h-full bg-white flex items-center justify-center p-2">
             <img 
